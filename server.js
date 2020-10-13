@@ -2,6 +2,8 @@ const express = require('express');
 const path = require('path');
 const favicon = require('serve-favicon');
 const logger = require('morgan');
+var classesRouter = require('./routes/api/classes');
+var studentsRouter = require('./routes/api/students');
 
 const app = express();
 
@@ -15,6 +17,8 @@ app.use(favicon(path.join(__dirname, 'build', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'build')));
 
 // Put API routes here, before the "catch all" route
+app.use('/api/classes', classesRouter);
+app.use('/api/students', studentsRouter);
 app.use('/api/users', require('./routes/api/users'));
 app.use(require('./config/auth'));
 

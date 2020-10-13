@@ -1,4 +1,4 @@
-import Class from '../../models/class';
+const Class = require('../../models/class');
 
 
 
@@ -15,9 +15,8 @@ module.exports = {
 }
 
 
-function createClass(class){
-    const class = await Class
-    
+function createClass(req, res){
+    console.log( req.params)
 };
 
 
