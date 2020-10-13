@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
+import StudentDetails from '../StudentDetails';
+import UserDisplay from '../UserDisplay';
+import ClassDetails from '../ClassDetails';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
@@ -12,7 +15,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       class: [],
-      
+
     };
   }
 
@@ -25,6 +28,9 @@ class App extends Component {
   handleSignupOrLogin = () => {
     this.setState({user: userService.getUser()})
   }
+  userDisplay = () => {
+    this.setState({user: userService.getUser})
+  }
   /*--- Lifecycle Methods ---*/
 
   render() {
@@ -34,10 +40,13 @@ class App extends Component {
         user={this.state.user} 
         handleLogout={this.handleLogout}
         />
+      
         <Switch>
-          <Route exact path='/' render={() =>
-           <div>Hello World!</div> 
-          }/>
+        <Route exact path='/' render={({ }) =>
+              <UserDisplay user={this.state.user}
+              />
+            }/>
+          
           <Route exact path='/signup' render={({ history }) => 
             <SignupPage
               history={history}
@@ -51,6 +60,15 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
+          <Route exact path='/ClassDetails' render={() => 
+            <ClassDetails
+            />
+          }/>
+          <Route exact path='/StudentDetails' render={() => 
+            <StudentDetails StudentDets={this.state}
+            />
+          }/>
+          
         </Switch>
       </div>
     );
