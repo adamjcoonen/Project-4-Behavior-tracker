@@ -17,7 +17,8 @@ const studentSchema = new mongoose.Schema({
   const incidentSchema = new mongoose.Schema({
     behavior: { type: String, required: true},
     antecedent: { type: String, required: true},
-    intervetion: { type: String, required: true},
+    consequense: { type: String, required: true},
+    notes: { type: String, required: false}
   }, {
     timestamps: true,
   })
