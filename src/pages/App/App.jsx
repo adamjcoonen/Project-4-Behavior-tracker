@@ -42,7 +42,7 @@ class App extends Component {
         />
       
         <Switch>
-        <Route exact path='/' render={({ }) =>
+        <Route exact path='/' render={() =>
               <UserDisplay user={this.state.user}
               />
             }/>
