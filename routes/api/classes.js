@@ -2,11 +2,11 @@ const express = require('express');
 const router = express.Router();
 const classesCtrl = require('../../controllers/api/classes');
 
-/*---------- Public Routes ----------*/
+/*---------- all Routes Protected Routes ----------*/
 
-router.get('/', classesCtrl.index);
-router.get('/:id', classesCtrl.edit)
-router.post('/', classesCtrl.create);
+// router.get('/', classesCtrl.indexClasses);
+// router.get('/:id', classesCtrl.editClasses)
+router.post('/', classesCtrl.createClasses);
 
 
 

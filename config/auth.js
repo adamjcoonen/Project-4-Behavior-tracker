@@ -16,7 +16,7 @@ module.exports = function(req, res, next) {
         req.user = decoded.user;    
         next();
       }
-    });
+    }); 
   } else {
     next();
   }

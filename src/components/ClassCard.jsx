@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom'
 
 
-class ClassButton extends Component {
+class ClassCard extends Component {
     render() {
         return(
 <div>
@@ -11,4 +12,4 @@ class ClassButton extends Component {
         )
 }
 }
-export default ClassButton;
+export default ClassCard;

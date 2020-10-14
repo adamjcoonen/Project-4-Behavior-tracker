@@ -2,10 +2,11 @@ const mongoose = require('mongoose');
 
 
 const classSchema = new mongoose.Schema({
+    // this is the name 
     name: { type: String, require: true},
-    user: [{ 
+    users: [{ 
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Users"
+        ref: 'User'
 
     }],
     students: [{
