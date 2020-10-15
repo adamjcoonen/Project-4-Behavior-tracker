@@ -19,7 +19,11 @@ class App extends Component {
       classes: [],
 
     };
-  }
+  };
+  async componentDidMount() {
+    const classes = await classRoomAPI.getAll();
+    this.setState({ classes });
+  };
 
   /*--- Callback Methods ---*/
   handleLogout = () => {
@@ -34,9 +38,9 @@ class App extends Component {
     this.setState({user: userService.getUser})
   }
   handleAddClassRoom = async newClassData => {
+    console.log(this.state.user)
     console.log(newClassData, 'this is newClassData' )
-    newClassData.user = this.state.user._id 
-    const newClass = await classRoomAPI.create(newClassData);
+    const newClass = await classRoomAPI.create(newClassData, this.state.user._id);
     this.setState(
       state => ({
       classes: [...state.classes, newClass],
@@ -59,7 +63,7 @@ class App extends Component {
       
         <Switch>
         <Route exact path='/' render={() =>
-              <UserDisplay user={this.state.user} handleAddClassRoom={this.handleAddClassRoom}
+              <UserDisplay user={this.state.user} handleAddClassRoom={this.handleAddClassRoom} classRooms={this.state.classes}
               
 
               />

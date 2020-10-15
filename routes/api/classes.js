@@ -4,7 +4,7 @@ const classesCtrl = require('../../controllers/api/classes');
 
 /*---------- all Routes Protected Routes ----------*/
 
-// router.get('/', classesCtrl.indexClasses);
+router.get('/', classesCtrl.indexClasses);
 // router.get('/:id', classesCtrl.editClasses)
 router.post('/', classesCtrl.createClasses);
 
