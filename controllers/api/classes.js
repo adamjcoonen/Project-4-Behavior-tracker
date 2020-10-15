@@ -12,7 +12,7 @@ module.exports = {
 
 
  async function indexClasses(req, res) {
-     console.log('indexing classes')
+     console.log('indexing classes',req )
      req.body.user = req.user._id
     const classes = await Class.find({user: req.user._id});
    

@@ -22,7 +22,9 @@ class App extends Component {
   };
   async componentDidMount() {
     const classes = await classRoomAPI.getAll();
+    console.log(classes)
     this.setState({ classes });
+    console.log(classes, "classes here")
   };
 
   /*--- Callback Methods ---*/

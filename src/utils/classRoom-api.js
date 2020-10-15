@@ -10,7 +10,7 @@ export function getAll() {
     headers: {
       'Content-type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
-    }
+    },
   })
   .then(res => res.json());
 }
