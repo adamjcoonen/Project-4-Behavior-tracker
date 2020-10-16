@@ -1,9 +1,9 @@
 import React from 'react'
 
-function studentCard(props) {
-    
+function StudentCard(props) {
+    <h1> StudentCard</h1>
 }
 
 
 
-export default 
+export default StudentCard
