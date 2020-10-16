@@ -26,7 +26,15 @@ class App extends Component {
     this.setState({ classrooms });
     console.log(classrooms, "classrooms here")
   };
-  async
+
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevState.user !== this.state.user) {
+      const classrooms = await classroomAPI.getAll();
+      this.setState({
+        classrooms: classrooms,
+      });
+    }
+  }
 
   /*--- Callback Methods ---*/
   handleLogout = () => {
