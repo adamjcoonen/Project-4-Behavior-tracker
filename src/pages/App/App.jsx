@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
-import * as classRoomAPI from '../../utils/classRoom-api';
+import * as classroomAPI from '../../utils/classroom-api';
 import StudentDetails from '../StudentDetails';
 import UserDisplay from '../UserDisplay';
-import ClassDetails from '../ClassDetails';
+import ClassroomDetails from '../ClassroomDetails';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
@@ -16,15 +16,15 @@ class App extends Component {
     super();
     this.state = {
       user: userService.getUser(),
-      classes: [],
+      classrooms: [],
 
     };
   };
   async componentDidMount() {
-    const classes = await classRoomAPI.getAll();
-    console.log(classes)
-    this.setState({ classes });
-    console.log(classes, "classes here")
+    const classrooms = await classroomAPI.getAll();
+    console.log(classrooms)
+    this.setState({ classrooms });
+    console.log(classrooms, "classrooms here")
   };
 
   /*--- Callback Methods ---*/
@@ -39,13 +39,13 @@ class App extends Component {
   userDisplay = () => {
     this.setState({user: userService.getUser})
   }
-  handleAddClassRoom = async newClassData => {
+  handleAddClassroom = async newClassroomData => {
     console.log(this.state.user)
-    console.log(newClassData, 'this is newClassData' )
-    const newClass = await classRoomAPI.create(newClassData, this.state.user._id);
+    console.log(newClassroomData, 'this is newClassroomData' )
+    const newClassroom = await classroomAPI.create(newClassroomData, this.state.user._id);
     this.setState(
       state => ({
-      classes: [...state.classes, newClass],
+      classrooms: [...state.classrooms, newClassroom],
       }),
       () => console.log(this.state)
       // this.props.history.push('/')
@@ -65,7 +65,7 @@ class App extends Component {
       
         <Switch>
         <Route exact path='/' render={() =>
-              <UserDisplay user={this.state.user} handleAddClassRoom={this.handleAddClassRoom} classRooms={this.state.classes}
+              <UserDisplay user={this.state.user} handleAddClassroom={this.handleAddClassroom} classrooms={this.state.classrooms}
               
 
               />
@@ -86,7 +86,7 @@ class App extends Component {
             />
           }/>
           <Route exact path='/ClassDetails' render={() => 
-            <ClassDetails
+            <ClassroomDetails
             />
           }/>
           <Route exact path='/StudentDetails' render={() => 

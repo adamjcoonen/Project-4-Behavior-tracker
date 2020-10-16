@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddClass extends Component {
+class AddClassroom extends Component {
     state={
         invalidForm: true,
         formData: {
@@ -8,9 +8,9 @@ class AddClass extends Component {
         }
     };
     formRef = React.createRef()
-    handleAddClassRoom = e => {
+    handleAddClassroom = e => {
         e.preventDefault();
-        this.props.handleAddClassRoom(this.state.formData)
+        this.props.handleAddClassroom(this.state.formData)
     };
     handleChange = e => {
         const formData = {...this.state.formData, [e.target.name]: e.target.value};
@@ -23,9 +23,9 @@ class AddClass extends Component {
     render() {
         return(
             <>
-            <h3 class="addClassLabel">Add a Classroom here:</h3>
-            <form ref={this.formRef} autoComplete="off" onSubmit={this.handleAddClassRoom}>
-                <div className='class-add-form'>
+            <h3 className="addClassLabel">Add a Classroom here:</h3>
+            <form ref={this.formRef} autoComplete="off" onSubmit={this.handleAddClassroom}>
+                <div className='classroom-add-form'>
                     <label> Class Name/Desigation</label>
                     <input 
                         className="form-control"
@@ -50,4 +50,4 @@ class AddClass extends Component {
 }
 
 
-export default AddClass
+export default AddClassroom

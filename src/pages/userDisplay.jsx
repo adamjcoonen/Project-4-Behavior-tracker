@@ -1,18 +1,18 @@
 import React from "react";
-import ClassCard from '../components/ClassCard'
-import AddClass from '../pages/AddClass'
+import ClassroomCard from '../components/ClassroomCard'
+import AddClassroom from '../pages/AddClassroom'
 import { Component, Link } from 'react';
-//this will diplay the current classes that the logged in user(teacher) has
+//this will diplay the current classrooms that the logged in user(teacher) has
 
 function UserDisplay(props) {
     let teach = props.user ?
-    <span class="eacher-home"> Welcome 
+    <span className="teacher-home"> Welcome 
       {props.user.name} 
       
       <ul>
-      {props.classRooms.map(cl => (
+      {props.classrooms.map(cl => (
         <li key={cl.id}>
-          <ClassCard  classRooms={cl} />
+          <ClassroomCard  classrooms={cl} />
             
           
         </li>
@@ -21,13 +21,13 @@ function UserDisplay(props) {
     </ul>
     
         
-        <AddClass handleAddClassRoom={props.handleAddClassRoom}/>
+        <AddClassroom handleAddClassroom={props.handleAddClassroom}/>
         
     </span>
     :
     <span> Please Log in to use</span>
   return (
-    <div className='classList'>
+    <div className='classroomList'>
       {teach}
       
     </div>

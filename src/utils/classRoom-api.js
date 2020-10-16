@@ -1,5 +1,5 @@
 import tokenService from './tokenService';
-const BASE_URL = '/api/classes';
+const BASE_URL = '/api/classrooms';
 
 
 
@@ -27,11 +27,11 @@ export function create(cRoom, userId) {
     body: JSON.stringify({...cRoom, 'user': userId })
   }).then(res => res.json());
 }
-// export function update(Class) {
-//   return fetch(`${BASE_URL}/${Class._id}`, {
+// export function update(Classroom) {
+//   return fetch(`${BASE_URL}/${Classroom._id}`, {
 //     method: 'PUT',
 //     headers: {'content-type': 'application/json'},
-//     body: JSON.stringify(Class)
+//     body: JSON.stringify(Classroom)
 //   }).then(res => res.json());
 // }
 // export function deleteOne(id) {

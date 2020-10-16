@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ClassDetails(props) {
+function ClassroomDetails(props) {
     return (
 <div className="Studnet-list">
     you will see list of students here
@@ -10,4 +10,4 @@ function ClassDetails(props) {
 
 
 
-export default ClassDetails
+export default ClassroomDetails
