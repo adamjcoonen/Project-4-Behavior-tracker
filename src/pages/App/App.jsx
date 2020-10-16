@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import * as classroomAPI from '../../utils/classroom-api';
 import StudentDetails from '../StudentDetails';
-import UserDisplay from '../UserDisplay';
+import UserDisplay from '../serDisplay';
 import ClassroomDetails from '../ClassroomDetails';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';

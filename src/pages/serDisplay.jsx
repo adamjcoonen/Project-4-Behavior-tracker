@@ -1,6 +1,6 @@
 import React from "react";
 import ClassroomCard from '../components/ClassroomCard'
-import AddClassroom from '../pages/AddClassroom'
+import AddClassroom from './AddClassroom'
 import { Component, Link } from 'react';
 //this will diplay the current classrooms that the logged in user(teacher) has
 
