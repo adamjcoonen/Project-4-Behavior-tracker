@@ -94,7 +94,8 @@ class App extends Component {
             />
           }/>
           <Route exact path='/ClassDetails' render={() => 
-            <ClassroomDetails
+            <ClassroomDetails 
+              classrooms={this.state.classrooms}
             />
           }/>
           <Route exact path='/StudentDetails' render={() => 

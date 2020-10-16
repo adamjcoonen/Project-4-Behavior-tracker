@@ -2,7 +2,7 @@ import React from 'react';
 
 function ClassroomDetails(props) {
     return (
-<div className="Studnet-list">
+<div className="Student-list">
     you will see list of students here
 </div>
     )
