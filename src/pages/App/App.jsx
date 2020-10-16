@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import * as classroomAPI from '../../utils/classroom-api';
-import StudentDetails from '../studentDetails';
+import StudentDetails from '../StudentDetails';
 import UserDisplay from '../UserDisplay';
 import ClassroomDetails from '../ClassroomDetails';
 import SignupPage from '../SignupPage/SignupPage';
