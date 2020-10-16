@@ -26,6 +26,7 @@ class App extends Component {
     this.setState({ classrooms });
     console.log(classrooms, "classrooms here")
   };
+  async
 
   /*--- Callback Methods ---*/
   handleLogout = () => {
@@ -47,8 +48,7 @@ class App extends Component {
       state => ({
       classrooms: [...state.classrooms, newClassroom],
       }),
-      () => console.log(this.state)
-      // this.props.history.push('/')
+      this.props.history.push('/')
     ) 
     
   }

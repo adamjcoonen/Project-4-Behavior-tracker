@@ -10,14 +10,14 @@ function UserDisplay(props) {
       {props.user.name} 
       
       <ul>
-      {props.classrooms.map(cl => (
+       {props.classrooms.map(cl => (
         <li key={cl.id}>
           <ClassroomCard  classrooms={cl} />
             
           
         </li>
         
-      ))}
+      ))} 
     </ul>
     
         

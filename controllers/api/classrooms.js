@@ -1,4 +1,4 @@
-const Class = require('../../models/classroom');
+const Classroom = require('../../models/classroom');
 
 
 
@@ -12,11 +12,14 @@ module.exports = {
 
 
  async function indexClassrooms(req, res) {
-     console.log('indexing Classrooms',req )
+     
      req.body.user = req.user._id
-    const classrooms = await Classroom.find({user: req.user._id});
+
+    const classrooms = await Classroom.find({'users': {$in: [req.body.user]}});
+    
    
     res.status(200).json(classrooms)
+    console.log('indexing Classrooms', classrooms )
 }
 
 
