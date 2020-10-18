@@ -14,7 +14,7 @@ function ClassroomDetails(props) {
 </div>
 
 <AddStudent  handleAddStudent={props.handleAddStudent}
-             classId={props.location.classroom} />
+             classId={classR._id} />
     </span>
     )
 

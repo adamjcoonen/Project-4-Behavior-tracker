@@ -17,16 +17,19 @@ export function getAll() {
 
 
 //this is create function that doesn't need 
-export function create(student, classroom) {
+export function create(student, userId, classId) {
+  console.log('DAAAAMMMNNN', student)
+
   return fetch(BASE_URL, {
+    
     method: 'POST',
     headers: {'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + tokenService.getToken(),
+    'Authorization': 'Bearer ' + tokenService.getToken()
   },
-    body: JSON.stringify({...student, 'classroom': classroom  } )
-    
-  }).then(res => res.json());
-  
+    body: JSON.stringify({...student, 'user': userId })
+   
+  })
+  .then(res => res.json());
 }
 // export function update(student) {
 //   return fetch(`${BASE_URL}/${Student._id}`, {

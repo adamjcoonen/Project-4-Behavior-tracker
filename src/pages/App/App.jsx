@@ -12,6 +12,8 @@ import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
 
 
+
+
 class App extends Component {
   constructor() {
     super();
@@ -28,12 +30,14 @@ class App extends Component {
   };
 
   async componentDidUpdate(prevProps, prevState) {
+    
     if (prevState.user !== this.state.user) {
       const classrooms = await classroomAPI.getAll();
       this.setState({
         classrooms: classrooms,
       });
     }
+    
   }
 
   /*--- Callback Methods ---*/
@@ -59,17 +63,17 @@ class App extends Component {
     
   }
   handleAddStudent = async newStudentData => {
-    console.log("this is a new state" )
-    const newStudent = await studentsAPI.create(newStudentData);
-    
+    const newStudent = await studentsAPI.create(newStudentData, this.state.user._id  );
     this.setState(
       state => ({
-        students: [...state.students, newStudent]
+        
+        students: [...state.students, newStudent ]
       }),
       
       this.props.history.push('/')
       
     )
+    
   }
 
   /*--- Lifecycle Methods ---*/
