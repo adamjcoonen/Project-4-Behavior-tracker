@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import * as classroomAPI from '../../utils/classroom-api';
+import * as studentsAPI from '../../utils/students-api';
 import StudentDetails from '../StudentDetails';
 import UserDisplay from '../UserDisplay';
 import ClassroomDetails from '../ClassroomDetails';
@@ -17,6 +18,7 @@ class App extends Component {
     this.state = {
       user: userService.getUser(),
       classrooms: [],
+      students: [],
 
     };
   };
@@ -49,8 +51,6 @@ class App extends Component {
     this.setState({user: userService.getUser})
   }
   handleAddClassroom = async newClassroomData => {
-    console.log(this.state.user)
-    console.log(newClassroomData, 'this is newClassroomData' )
     const newClassroom = await classroomAPI.create(newClassroomData, this.state.user._id);
     this.setState(
       state => ({
@@ -59,6 +59,17 @@ class App extends Component {
       this.props.history.push('/')
     ) 
     
+  }
+  handleAddStudent = async newStudentData => {
+    console.log("this is a new student", this.state)
+    const newStudent = await studentsAPI.create(newStudentData);
+    this.setState(
+      state => ({
+        students: [...state.students, newStudent]
+      }),
+      this.props.history.push('/')
+    )
+
   }
 
   /*--- Lifecycle Methods ---*/
@@ -96,6 +107,8 @@ class App extends Component {
           <Route exact path='/ClassDetails' render={() => 
             <ClassroomDetails 
               classrooms={this.state.classrooms}
+              handleAddStudent={this.handleAddStudent}
+              student={this.state.students}
             />
           }/>
           <Route exact path='/StudentDetails' render={() => 

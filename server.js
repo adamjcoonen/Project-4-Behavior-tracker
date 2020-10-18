@@ -21,7 +21,7 @@ app.use('/api/users', require('./routes/api/users'));
 
 // Put API routes here, before the "catch all" route
 app.use('/api/classrooms', classroomsRouter);
-// app.use('/api/students', studentsRouter);
+app.use('/api/students', studentsRouter);
 
 
 // The following "catch all" route (note the *)is necessary

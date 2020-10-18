@@ -6,8 +6,7 @@ import { Component, Link } from 'react';
 
 function UserDisplay(props) {
     let teach = props.user ?
-    <span className="teacher-home"> Welcome 
-      {props.user.name} 
+    <span className="teacher-home"> Welcome {props.user.name}
       
       <ul>
        {props.classrooms.map(cl => (

@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 
 
+const incidentSchema = new mongoose.Schema({
+  behavior: { type: String, required: true},
+  antecedent: { type: String, required: true},
+  consequense: { type: String, required: true},
+  notes: { type: String, required: false}
+}, {
+  timestamps: true,
+})
+
+
 const studentSchema = new mongoose.Schema({
     name: { type: String, require: true},
     dob: { type: Date, require: true},
@@ -14,14 +24,7 @@ const studentSchema = new mongoose.Schema({
   });
 
 
-  const incidentSchema = new mongoose.Schema({
-    behavior: { type: String, required: true},
-    antecedent: { type: String, required: true},
-    consequense: { type: String, required: true},
-    notes: { type: String, required: false}
-  }, {
-    timestamps: true,
-  })
+
   
 
   module.exports = mongoose.model('Student', studentSchema)
