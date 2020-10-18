@@ -26,6 +26,7 @@ class App extends Component {
   };
   async componentDidMount() {
     const classrooms = await classroomAPI.getAll();
+    // const students = await studentsAPI.getAll();
     this.setState({ classrooms });
   };
 

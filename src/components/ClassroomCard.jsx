@@ -7,7 +7,7 @@ function ClassCard(props){
     return(
 <div>
     <h1> {props.classrooms.name}</h1> <br></br>
-    <Link to={{pathname:'/ClassDetails', state: {classroom: props.classrooms , id: props.id}
+    <Link to={{pathname:'/classDetails/', state: {classroom: props.classrooms}
     }}
     >Class Details</Link>
     </div>

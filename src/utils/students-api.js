@@ -3,7 +3,7 @@ const BASE_URL = '/api/students';
 
 
 
-//this is the index function for all Class
+//this is the index function for all students
 export function getAll() {
   return fetch(BASE_URL, {
     method: 'GET',

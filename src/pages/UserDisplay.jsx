@@ -11,7 +11,7 @@ function UserDisplay(props) {
       <ul>
        {props.classrooms.map(cl => (
         <li key={cl.id}>
-          <ClassroomCard  classrooms={cl} id={cl._id} />
+          <ClassroomCard  classrooms={cl.name} id={cl._id} />
             
           
         </li>

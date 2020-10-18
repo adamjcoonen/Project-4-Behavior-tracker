@@ -7,10 +7,21 @@ const Classroom = require('../../models/classroom');
 
 module.exports = {
     createStudents,
-    // indexStudents,
+    indexStudents,
     
 }
 
+
+
+async function indexStudents(req, res) {
+     
+    req.body._id = req.user
+
+   const students = await Student.find({'students': {$in: classR[students]}});
+   
+  
+   res.status(200).json(students)
+}
 
 async function createStudents(req, res ){
     
@@ -24,14 +35,18 @@ async function createStudents(req, res ){
     }
 
     const student = await Student.create(std)
-    student.save();
-     const classR = Classroom.findById(`${req.body.classId}`) 
-     classR.students.push(std._id)
+    student.save(function(err){;
+    Classroom.findById(req.body.classId, function(err, classR){
+        classR.students.push(student._id)
         classR.save()
+
+    })
+     
+
     
+    } )
     
-    
-    console.log("let get that Id", student.params._id)
+    console.log("let get that Id",  student._id)
     
     res.status(201).json(student)
 }

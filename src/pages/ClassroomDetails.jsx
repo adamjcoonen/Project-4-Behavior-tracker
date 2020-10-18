@@ -10,7 +10,7 @@ function ClassroomDetails(props) {
         
         <h1> Classroom Name {classR.name}</h1>
 <div className="Student-list">
-        
+        {props.index}
 </div>
 
 <AddStudent  handleAddStudent={props.handleAddStudent}
