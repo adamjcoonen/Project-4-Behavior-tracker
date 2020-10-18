@@ -2,13 +2,19 @@ import React from 'react';
 import AddStudent from './AddStudent';
 
 function ClassroomDetails(props) {
+    let classR = props.location.state.classroom;
     return (
         <span className='student-page'>
+    
+
+        
+        <h1> Classroom Name {classR.name}</h1>
 <div className="Student-list">
-    you will see list of students here
+        
 </div>
-<button className='add-student' handleAddStudent={props.handleAddStudent}>Add New Student</button>
-<AddStudent  handleAddStudent={props.handleAddStudent}/>
+
+<AddStudent  handleAddStudent={props.handleAddStudent}
+             classId={props.location.classroom} />
     </span>
     )
 

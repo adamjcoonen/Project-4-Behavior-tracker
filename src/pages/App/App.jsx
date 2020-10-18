@@ -24,9 +24,7 @@ class App extends Component {
   };
   async componentDidMount() {
     const classrooms = await classroomAPI.getAll();
-    console.log(classrooms)
     this.setState({ classrooms });
-    console.log(classrooms, "classrooms here")
   };
 
   async componentDidUpdate(prevProps, prevState) {
@@ -61,15 +59,17 @@ class App extends Component {
     
   }
   handleAddStudent = async newStudentData => {
-    console.log("this is a new student", this.state)
+    console.log("this is a new state" )
     const newStudent = await studentsAPI.create(newStudentData);
+    
     this.setState(
       state => ({
         students: [...state.students, newStudent]
       }),
+      
       this.props.history.push('/')
+      
     )
-
   }
 
   /*--- Lifecycle Methods ---*/
@@ -104,12 +104,17 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/ClassDetails' render={() => 
+          <Route exact path='/ClassDetails' render={({location}) => 
+    
             <ClassroomDetails 
+              location={location}
               classrooms={this.state.classrooms}
               handleAddStudent={this.handleAddStudent}
               student={this.state.students}
+              
+              
             />
+          
           }/>
           <Route exact path='/StudentDetails' render={() => 
             <StudentDetails StudentDets={this.state}

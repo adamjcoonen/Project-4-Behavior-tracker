@@ -18,7 +18,6 @@ export function getAll() {
 
 //this is create function that doesn't need 
 export function create(cRoom, userId) {
-  console.log(userId);
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {'Content-Type': 'application/json',
