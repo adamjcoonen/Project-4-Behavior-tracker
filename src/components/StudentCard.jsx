@@ -6,7 +6,7 @@ function StudentCard(props){
     
     return(
 <div>
-    <h1> {props.student}</h1> <br></br>
+    <h1> {props.students.name}</h1> <br></br>
     <Link to={{pathname:'/StudentDetails', state: {student: props.student}
     }}
     >Student Details</Link>

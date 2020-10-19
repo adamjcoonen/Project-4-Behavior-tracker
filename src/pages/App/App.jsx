@@ -3,9 +3,9 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import * as classroomAPI from '../../utils/classroom-api';
 import * as studentsAPI from '../../utils/students-api';
-import StudentDetails from '../StudentDetails';
-import UserDisplay from '../UserDisplay';
-import ClassroomDetails from '../ClassroomDetails';
+import StudentDetails from '../../pages/App/StudentDetails';
+import UserDisplay from '../../pages/App/UserDisplay';
+import ClassroomDetails from '../../pages/App/ClassroomDetails';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import userService from '../../utils/userService';
@@ -35,6 +35,7 @@ class App extends Component {
     this.setState({
       students
     })
+    const singleClassroom = await classroomAPI.getOneClass
   }
 
 
@@ -45,7 +46,7 @@ class App extends Component {
       this.setState({
         classrooms: classrooms,
       });
-      const students = await studentsAPI.getAllStud( this.state.classrooms.location)
+      const students = await studentsAPI.getAllStud()
       this.setState({
         students: students
       })

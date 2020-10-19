@@ -40,7 +40,7 @@ async function createStudents(req, res ){
     const student = await Student.create(std)
     student.save(function(err){;
     Classroom.findById(req.body.classId, function(err, classR){
-        classR.students.push(student._id)
+        classR.Student.push(student._id)
         classR.save()
 
     })

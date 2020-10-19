@@ -14,6 +14,14 @@ export function getAll() {
   })
   .then(res => res.json());
 }
+export function getOneClass(classId){
+  return fetch(`${BASE_URL}/ClassroomDetails/${classId}`, {
+    method:'GET',
+    headers: {'content-type': 'application/json',
+    'authorization': 'Bearer ' + tokenService()
+  }
+  }).then(res => res.json());
+}
 
 
 //this is create function that doesn't need 
