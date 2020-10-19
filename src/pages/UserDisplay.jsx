@@ -25,6 +25,7 @@ function UserDisplay(props) {
     </span>
     :
     <span> Please Log in to use</span>
+    
   return (
     <div className='classroomList'>
       {teach}

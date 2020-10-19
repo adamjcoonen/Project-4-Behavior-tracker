@@ -1,16 +1,18 @@
+
 import tokenService from './tokenService';
 const BASE_URL = '/api/students';
 
 
 
 //this is the index function for all students
-export function getAll() {
+export function getAllStud() {
   return fetch(BASE_URL, {
     method: 'GET',
     headers: {
       'Content-type': 'application/json',
-      'Authorization': 'Bearer ' + tokenService.getToken()
-    },
+      'Authorization': 'Bearer ' + tokenService.getToken(),
+    }
+    
   })
   .then(res => res.json());
 }
@@ -26,7 +28,7 @@ export function create(student, userId, classId) {
     headers: {'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + tokenService.getToken()
   },
-    body: JSON.stringify({...student, 'user': userId })
+    body: JSON.stringify({...student, 'user': userId , classId})
    
   })
   .then(res => res.json());

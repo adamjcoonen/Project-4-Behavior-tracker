@@ -5,6 +5,7 @@ const Classroom = require('../../models/classroom');
 
 
 
+
 module.exports = {
     createStudents,
     indexStudents,
@@ -12,16 +13,18 @@ module.exports = {
 }
 
 
-
 async function indexStudents(req, res) {
-     
-    req.body._id = req.user
+    console.log('firing index', req.headers)
+    req.body.user = req.user._id
 
-   const students = await Student.find({'students': {$in: classR[students]}});
+    const students = await Student.find({});
+    
    
+    res.status(200).json(students)
+   
+  }
   
-   res.status(200).json(students)
-}
+
 
 async function createStudents(req, res ){
     
@@ -46,7 +49,7 @@ async function createStudents(req, res ){
     
     } )
     
-    console.log("let get that Id",  student._id)
     
     res.status(201).json(student)
 }
+

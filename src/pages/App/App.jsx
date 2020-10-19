@@ -13,9 +13,10 @@ import NavBar from '../../components/NavBar/NavBar';
 
 
 
-
 class App extends Component {
+  
   constructor() {
+    
     super();
     this.state = {
       user: userService.getUser(),
@@ -24,11 +25,18 @@ class App extends Component {
 
     };
   };
+  
   async componentDidMount() {
+
     const classrooms = await classroomAPI.getAll();
-    // const students = await studentsAPI.getAll();
-    this.setState({ classrooms });
-  };
+    this.setState({ classrooms: classrooms,
+                  })
+    const students = await studentsAPI.getAllStud();
+    this.setState({
+      students
+    })
+  }
+
 
   async componentDidUpdate(prevProps, prevState) {
     
@@ -37,9 +45,16 @@ class App extends Component {
       this.setState({
         classrooms: classrooms,
       });
+      const students = await studentsAPI.getAllStud( this.state.classrooms.location)
+      this.setState({
+        students: students
+      })
+
     }
     
   }
+
+
 
   /*--- Callback Methods ---*/
   handleLogout = () => {
@@ -109,13 +124,13 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/ClassDetails' render={({location}) => 
+          <Route exact path='/ClassroomDetails' render={({location}) => 
     
             <ClassroomDetails 
               location={location}
               classrooms={this.state.classrooms}
               handleAddStudent={this.handleAddStudent}
-              student={this.state.students}
+              students={this.state.students}
               
               
             />

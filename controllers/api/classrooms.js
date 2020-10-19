@@ -12,7 +12,6 @@ module.exports = {
 
 
  async function indexClassrooms(req, res) {
-     
      req.body.user = req.user._id
 
     const classrooms = await Classroom.find({'users': {$in: [req.body.user]}});
@@ -23,6 +22,7 @@ module.exports = {
 
 
 async function createClassrooms(req, res){
+
     let clR = {
         name: req.body.name,
     }
