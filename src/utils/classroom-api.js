@@ -11,17 +11,20 @@ export function getAll() {
       'Content-type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
-  })
-  .then(res => res.json());
-}
-export function getOneClass(classId){
-  return fetch(`${BASE_URL}/ClassroomDetails/${classId}`, {
-    method:'GET',
-    headers: {'content-type': 'application/json',
-    'authorization': 'Bearer ' + tokenService()
-  }
   }).then(res => res.json());
 }
+
+export function getOneClass() {
+  return fetch(BASE_URL, {
+      method: 'GET',
+      headers: {
+          'Content-type': 'application/json',
+          // Add this header - don't forget the space after Bearer 
+          'Authorization': 'Bearer ' + tokenService.getToken()
+      },
+  }).then(res => res.json());
+};
+
 
 
 //this is create function that doesn't need 
@@ -33,8 +36,12 @@ export function create(cRoom, userId) {
     'Authorization': 'Bearer ' + tokenService.getToken(),
   },
     body: JSON.stringify({...cRoom, 'user': userId })
-  }).then(res => res.json());
+  }).then(res => res.json())
 }
+
+
+
+
 // export function update(Classroom) {
 //   return fetch(`${BASE_URL}/${Classroom._id}`, {
 //     method: 'PUT',

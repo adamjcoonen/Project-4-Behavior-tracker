@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
+import SignupPage from '../SignupPage/SignupPage';
+import LoginPage from '../LoginPage/LoginPage';
+import userService from '../../utils/userService';
 import * as classroomAPI from '../../utils/classroom-api';
 import * as studentsAPI from '../../utils/students-api';
 import StudentDetails from '../../pages/App/StudentDetails';
 import UserDisplay from '../../pages/App/UserDisplay';
 import ClassroomDetails from '../../pages/App/ClassroomDetails';
-import SignupPage from '../SignupPage/SignupPage';
-import LoginPage from '../LoginPage/LoginPage';
-import userService from '../../utils/userService';
 import NavBar from '../../components/NavBar/NavBar';
+
 
 
 
@@ -22,6 +23,7 @@ class App extends Component {
       user: userService.getUser(),
       classrooms: [],
       students: [],
+      singleClassroom: []
 
     };
   };
@@ -29,13 +31,14 @@ class App extends Component {
   async componentDidMount() {
 
     const classrooms = await classroomAPI.getAll();
-    this.setState({ classrooms: classrooms,
+    this.setState({ 
+      classrooms: classrooms,
+
                   })
     const students = await studentsAPI.getAllStud();
     this.setState({
-      students
+      students: students
     })
-    const singleClassroom = await classroomAPI.getOneClass
   }
 
 
@@ -43,17 +46,24 @@ class App extends Component {
     
     if (prevState.user !== this.state.user) {
       const classrooms = await classroomAPI.getAll();
+      
       this.setState({
-        classrooms: classrooms,
+        classrooms: [classrooms],
+        
       });
       const students = await studentsAPI.getAllStud()
       this.setState({
-        students: students
+        students: [students]
       })
 
-    }
+    } else if  (prevState.singleClassroom !== this.state.singleClassroom)  {
     
+      const singleClassroom = await classroomAPI.getOneClass()
+      this.setState({
+        singleClassroom: [singleClassroom]
+      })
   }
+}
 
 
 
@@ -125,13 +135,13 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/ClassroomDetails' render={({location}) => 
+          <Route exact path='/ClassroomDetails' render={({location})  => 
     
             <ClassroomDetails 
-              location={location}
-              classrooms={this.state.classrooms}
+              location={location.classrooms}
               handleAddStudent={this.handleAddStudent}
               students={this.state.students}
+              singleClassroom={this.getOneClass}
               
               
             />

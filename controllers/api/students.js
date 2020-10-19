@@ -14,8 +14,8 @@ module.exports = {
 
 
 async function indexStudents(req, res) {
-    console.log('firing index', req.headers)
     req.body.user = req.user._id
+    console.log('firing index', req.json)
 
     const students = await Student.find({});
     
@@ -27,7 +27,7 @@ async function indexStudents(req, res) {
 
 
 async function createStudents(req, res ){
-    
+    req.body.user = req.user._id
     let std = { name: req.body.name,
                 dob: req.body.dob,
                 iep_date: req.body.iepDt,

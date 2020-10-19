@@ -6,23 +6,29 @@ const Classroom = require('../../models/classroom');
 module.exports = {
     createClassrooms,
     indexClassrooms,
+    show,
     
 }
+
 
 
 
  async function indexClassrooms(req, res) {
      req.body.user = req.user._id
 
-    const classrooms = await Classroom.find({'users': {$in: [req.body.user]}});
+    const classrooms = await Classroom.find({'users': {$in: req.body.user}});
     
    
     res.status(200).json(classrooms)
 }
 
 
-async function createClassrooms(req, res){
+async function show(req, res){
+    console.log(req.params)
+}
 
+async function createClassrooms(req, res){
+    req.body.user = req.user._id
     let clR = {
         name: req.body.name,
     }
