@@ -49,8 +49,8 @@ export function create(cRoom, userId) {
 //     body: JSON.stringify(Classroom)
 //   }).then(res => res.json());
 // }
-// export function deleteOne(id) {
-//   return fetch(`${BASE_URL}/${id}`, {
-//     method: 'DELETE'
-//   }).then(res => res.json());
-// }
+export function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE'
+  }).then(res => res.json());
+}

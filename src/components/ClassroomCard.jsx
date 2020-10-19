@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 
 
-function ClassCard(props){        
+function ClassroomCard(props){        
     
     return(
 <div>
-    <h1> {props.classrooms}</h1> <br></br>
+    <h1> {props.classrooms.name}</h1> <br></br>
 
-    <Link to={{pathname:'/ClassroomDetails', state: {classrooms: props.classrooms}
-    }}
-    >Class Details</Link>
+    <button  onClick{() => props.handleDeleteClass(props.classrooms._id)}> Delete </button>
     </div>
         )
 };
 
-export default ClassCard;
+export default ClassroomCard;

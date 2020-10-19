@@ -40,8 +40,8 @@ export function create(student, userId, classId) {
 //     body: JSON.stringify(student)
 //   }).then(res => res.json());
 // }
-// export function deleteOne(id) {
-//   return fetch(`${BASE_URL}/${id}`, {
-//     method: 'DELETE'
-//   }).then(res => res.json());
-// }
+export function deleteOne(id) {
+  return fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE'
+  }).then(res => res.json());
+}

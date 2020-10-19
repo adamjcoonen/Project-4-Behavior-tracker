@@ -7,7 +7,8 @@ router.use(require('../../config/auth'));
 router.get('/', classroomsCtrl.indexClassrooms);
 // router.get('/:id', classroomsCtrl.editclassrooms)
 router.post('/', classroomsCtrl.createClassrooms);
-router.get('/classDetails', classroomsCtrl.show)
+router.get('/', classroomsCtrl.show)
+router.delete('/:id', classroomsCtrl.delete)
 
 
 

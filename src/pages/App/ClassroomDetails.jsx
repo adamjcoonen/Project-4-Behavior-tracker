@@ -22,9 +22,9 @@ function ClassroomDetails(props) {
         <h1> Classroom Name {classR}</h1>
 <div className="Student-list">
 <ul>
-         {props.students.map( (std, idx) => ( 
+         {props.students.map( (std, id) => ( 
             
-        <li  key={std.idx} >
+        <li  key={std.id} >
         
           <StudentCard  students={std.name}  />
           

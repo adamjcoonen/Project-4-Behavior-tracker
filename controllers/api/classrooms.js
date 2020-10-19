@@ -7,6 +7,7 @@ module.exports = {
     createClassrooms,
     indexClassrooms,
     show,
+    delete: deleteOne,
     
 }
 
@@ -38,4 +39,7 @@ async function createClassrooms(req, res){
     res.status(201).json(classroom)
 };
 
-
+async function deleteOne(req, res) {
+    const deletedEvent = await Event.findByIdAndRemove(req.params.id);
+    res.status(200).json(deletedEvent);
+}

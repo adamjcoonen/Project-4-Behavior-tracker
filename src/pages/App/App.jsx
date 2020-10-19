@@ -102,6 +102,13 @@ class App extends Component {
     )
     
   }
+  handleDeleteClass = async id => {
+    await classroomAPI.deleteOne(id);
+    this.setState(state => ({
+      classrooms: state.classrooms.filter(e => e._id !== id),
+    }),
+      () => this.props.history.push('/'))
+  }
 
   /*--- Lifecycle Methods ---*/
 
@@ -113,9 +120,13 @@ class App extends Component {
         handleLogout={this.handleLogout}
         />
       
-        <Switch>
+        <Switch >
         <Route exact path='/' render={() =>
-              <UserDisplay user={this.state.user} handleAddClassroom={this.handleAddClassroom} classrooms={this.state.classrooms}
+              <UserDisplay 
+              user={this.state.user} 
+              handleAddClassroom={this.handleAddClassroom} 
+              handleDeleteClass={this.handleDeleteClass} 
+              classrooms={this.state.classrooms}
               
 
               />
