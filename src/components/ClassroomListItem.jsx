@@ -3,10 +3,27 @@ import { Link } from 'react-router-dom';
 import ClassroomCard from '../components/ClassroomCard'
 
 function ClassroomListItem(props) {
+    
+    
     return (
-        <ClassroomCard  classrooms={props.classrooms}
-                        handleDeleteClass={props.handleDeleteClass}    />
-    );
+        <>
+        
+    
+       
+
+        <ClassroomCard name={props.name} />
+        
+    
+
+    <button onClick={(e)  => props.handleDeleteClass(props.id)}>
+     Delete </button>
+                        
+   
+    </>
+     )
+
+
 }
+
 
 export default ClassroomListItem;

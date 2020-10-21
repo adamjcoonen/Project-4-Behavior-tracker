@@ -1,5 +1,4 @@
 import React from "react";
-import ClassroomCard from '../../components/ClassroomCard'
 import AddClassroom from '../../components/AddClassroom'
 import ClassroomListItem from '../../components/ClassroomListItem'
 import { Component, Link } from 'react';
@@ -10,13 +9,16 @@ function UserDisplay(props) {
     <span className="teacher-home"> Welcome {props.user.name}
       
       <ul>
-       {props.classrooms.map((cl, id) => (
+       {props.classrooms.map((cl, idx) => (
         <li >
+        {console.log(cl._id)}
         <ClassroomListItem
-                                classrooms={props.classrooms}
-                                key={props.classrooms.id}
-                                user={props.user}
+        
+                                name={cl.name}
+                                user={cl.user}
                                 handleDeleteClass={props.handleDeleteClass}
+                                id={cl._id}
+                                key={idx}
                             />
                         </li>
             

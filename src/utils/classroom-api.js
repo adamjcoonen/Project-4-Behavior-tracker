@@ -1,3 +1,4 @@
+import { createStudents } from '../../controllers/api/students';
 import tokenService from './tokenService';
 const BASE_URL = '/api/classrooms';
 
@@ -14,8 +15,8 @@ export function getAll() {
   }).then(res => res.json());
 }
 
-export function getOneClass() {
-  return fetch(BASE_URL, {
+export function getOneClass(id) {
+  return fetch(`${BASE_URL}/${id}`, {
       method: 'GET',
       headers: {
           'Content-type': 'application/json',
@@ -28,7 +29,7 @@ export function getOneClass() {
 
 
 //this is create function that doesn't need 
-export function create(cRoom, userId) {
+export function createClassrooms(cRoom, userId) {
   console.log(userId);
   return fetch(BASE_URL, {
     method: 'POST',
@@ -49,7 +50,8 @@ export function create(cRoom, userId) {
 //     body: JSON.stringify(Classroom)
 //   }).then(res => res.json());
 // }
-export function deleteOne(id) {
+export function deleteClassroom(id) {
+  console.log(id,"this is api id")
   return fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE'
   }).then(res => res.json());

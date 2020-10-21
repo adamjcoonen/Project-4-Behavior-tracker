@@ -31,13 +31,13 @@ class App extends Component {
   async componentDidMount() {
 
     const classrooms = await classroomAPI.getAll();
-    this.setState({ 
-      classrooms: classrooms,
-
+    this.setState ({ 
+      classrooms: classrooms
                   })
+
     const students = await studentsAPI.getAllStud();
     this.setState({
-      students: students
+      students: [students]
     })
   }
 
@@ -48,22 +48,25 @@ class App extends Component {
       const classrooms = await classroomAPI.getAll();
       
       this.setState({
-        classrooms: [classrooms],
-        
+        classrooms: classrooms,
       });
       const students = await studentsAPI.getAllStud()
       this.setState({
         students: [students]
       })
-
-    } else if  (prevState.singleClassroom !== this.state.singleClassroom)  {
-    
-      const singleClassroom = await classroomAPI.getOneClass()
+      const newClassroom = await classroomAPI.createClassrooms()
       this.setState({
-        singleClassroom: [singleClassroom]
+        classrooms: classrooms
       })
+
+    }  
+    
+      // const singleClassroom = await classroomAPI.getOneClass()
+      // this.setState({
+      //   singleClassroom: [singleClassroom]
+      // })
   }
-}
+
 
 
 
@@ -80,11 +83,10 @@ class App extends Component {
     this.setState({user: userService.getUser})
   }
   handleAddClassroom = async newClassroomData => {
-    const newClassroom = await classroomAPI.create(newClassroomData, this.state.user._id);
-    this.setState(
-      state => ({
-      classrooms: [...state.classrooms, newClassroom],
-      }),
+    const newClassroom = await classroomAPI.createClassrooms(newClassroomData, this.state.user._id);
+    this.setState({
+      classrooms: [...this.state.classrooms, newClassroom],
+      },
       this.props.history.push('/')
     ) 
     
@@ -103,9 +105,11 @@ class App extends Component {
     
   }
   handleDeleteClass = async id => {
-    await classroomAPI.deleteOne(id);
+    console.log(this.state)
+    console.log(id)
+    await classroomAPI.deleteClassroom(id)
     this.setState(state => ({
-      classrooms: state.classrooms.filter(e => e._id !== id),
+      classrooms: state.classrooms.filter((c) => c.id !== id),
     }),
       () => this.props.history.push('/'))
   }
