@@ -22,7 +22,10 @@ function ClassroomListItem(props) {
           className='btn btn-xs btn-info'
           to={{
           pathname: '/ClassroomDetails',
-          state: { Classroom: props.Classroom}
+          state: {
+              location: props.location,
+              id: props.id,
+              name: props.name}
           }}>Details</Link>
     </>
      )

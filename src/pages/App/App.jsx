@@ -154,6 +154,7 @@ class App extends Component {
               location={location}
               handleAddStudent={this.handleAddStudent}
               students={this.state.students}
+              classrooms={this.state.classrooms}
               
               
             />
