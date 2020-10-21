@@ -37,7 +37,7 @@ class App extends Component {
 
     const students = await studentsAPI.getAllStud();
     this.setState({
-      students: [students]
+      students: students
     })
     
   }
@@ -129,6 +129,7 @@ class App extends Component {
               handleAddClassroom={this.handleAddClassroom} 
               handleDeleteClass={this.handleDeleteClass} 
               classrooms={this.state.classrooms}
+              students={this.state.students}
               
 
               />

@@ -6,7 +6,6 @@ const studentsCtrl = require('../../controllers/api/students');
 router.use(require('../../config/auth'));
 router.post('/', studentsCtrl.createStudents);
 router.get('/', studentsCtrl.indexStudents);
-// router.get('/:id', studentsCtrl.create)
 
 
 

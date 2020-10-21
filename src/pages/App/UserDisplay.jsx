@@ -12,12 +12,13 @@ function UserDisplay(props) {
         <li >
         {console.log(cl._id)}
         <ClassroomListItem
-        
+                                location={props.location}
                                 name={cl.name}
                                 user={cl.user}
                                 handleDeleteClass={props.handleDeleteClass}
                                 id={cl._id}
                                 key={idx}
+                                students={props.students}
                             />
                         </li>
             
