@@ -18,7 +18,12 @@ function ClassroomListItem(props) {
     <button onClick={(e)  => props.handleDeleteClass(props.id)}>
      Delete </button>
                         
-   
+     <Link
+          className='btn btn-xs btn-info'
+          to={{
+          pathname: '/ClassroomDetails',
+          state: { Classroom: props.Classroom}
+          }}>Details</Link>
     </>
      )
 

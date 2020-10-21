@@ -49,9 +49,9 @@ export function createClassrooms(cRoom, userId) {
 //     body: JSON.stringify(Classroom)
 //   }).then(res => res.json());
 // }
-export function deleteClassroom(id) {
-  console.log(id,"this is api id")
-  return fetch(`${BASE_URL}/${id}`, {
+export function deleteClassroom(_id) {
+  console.log(_id,"this is api id")
+  return fetch(`${BASE_URL}/${_id}`, {
     method: 'DELETE'
   }).then(res => res.json());
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import AddClassroom from '../../components/AddClassroom'
 import ClassroomListItem from '../../components/ClassroomListItem'
-import { Component, Link } from 'react';
 //this will diplay the current classrooms that the logged in user(teacher) has
 
 function UserDisplay(props) {

@@ -148,13 +148,12 @@ class App extends Component {
               handleSignupOrLogin={this.handleSignupOrLogin}
             />
           }/>
-          <Route exact path='/ClassroomDetails' render={({location})  => 
-    
+          <Route exact path='/ClassroomDetails' render={({ location })  => 
+
             <ClassroomDetails 
-              location={location.classrooms}
+              location={location}
               handleAddStudent={this.handleAddStudent}
               students={this.state.students}
-              singleClassroom={this.getOneClass}
               
               
             />

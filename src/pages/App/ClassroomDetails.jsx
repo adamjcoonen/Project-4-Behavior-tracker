@@ -6,12 +6,10 @@ import StudentCard from '../../components/StudentCard'
 
 function ClassroomDetails(props) {
 
-
-
-
-    const classR = props.location
-    // const inClassStu = props.students.filter( x => props.classrooms.students.includes(x._id));
     
+    console.log(props)
+    // const inClassStu = props.students.filter( x => props.classrooms.students.includes(x._id));
+    let classR = props.location.state.name
     
     return (
       
@@ -19,7 +17,7 @@ function ClassroomDetails(props) {
     
 
         
-        <h1> Classroom Name {classR}</h1>
+        <h1> Classroom Name: {classR}</h1>
 <div className="Student-list">
 <ul>
          {props.students.map( (std, id) => ( 
