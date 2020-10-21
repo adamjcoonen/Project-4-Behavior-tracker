@@ -1,4 +1,3 @@
-import { createStudents } from '../../controllers/api/students';
 import tokenService from './tokenService';
 const BASE_URL = '/api/classrooms';
 
@@ -30,13 +29,13 @@ export function getOneClass(id) {
 
 //this is create function that doesn't need 
 export function createClassrooms(cRoom, userId) {
-  console.log(userId);
   return fetch(BASE_URL, {
     method: 'POST',
-    headers: {'Content-Type': 'application/json',
+    headers: {
+    'content-type': 'application/json',
     'Authorization': 'Bearer ' + tokenService.getToken(),
   },
-    body: JSON.stringify({...cRoom, 'user': userId })
+    body: JSON.stringify({...cRoom, 'user': userId }),
   }).then(res => res.json())
 }
 

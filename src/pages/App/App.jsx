@@ -39,8 +39,9 @@ class App extends Component {
     this.setState({
       students: [students]
     })
+    
   }
-
+    
 
   async componentDidUpdate(prevProps, prevState) {
     
@@ -54,10 +55,7 @@ class App extends Component {
       this.setState({
         students: [students]
       })
-      const newClassroom = await classroomAPI.createClassrooms()
-      this.setState({
-        classrooms: classrooms
-      })
+     
 
     }  
     
@@ -84,13 +82,13 @@ class App extends Component {
   }
   handleAddClassroom = async newClassroomData => {
     const newClassroom = await classroomAPI.createClassrooms(newClassroomData, this.state.user._id);
-    this.setState({
-      classrooms: [...this.state.classrooms, newClassroom],
-      },
-      this.props.history.push('/')
-    ) 
+    this.setState(state => ({
+      classrooms: [...state.classrooms, newClassroom]
+  }),
+      () => this.props.history.push('/')
     
-  }
+    
+    )}
   handleAddStudent = async newStudentData => {
     const newStudent = await studentsAPI.create(newStudentData, this.state.user._id  );
     this.setState(
@@ -109,7 +107,7 @@ class App extends Component {
     console.log(id)
     await classroomAPI.deleteClassroom(id)
     this.setState(state => ({
-      classrooms: state.classrooms.filter((c) => c.id !== id),
+      classrooms: state.classrooms.filter((c) => c._id !== id),
     }),
       () => this.props.history.push('/'))
   }

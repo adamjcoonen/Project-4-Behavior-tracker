@@ -30,6 +30,7 @@ module.exports = {
 async function createClassrooms(req, res){
     
     req.body.user = req.user._id;
+    try {
     let clR = {
         name: req.body.name,
     }
@@ -37,7 +38,10 @@ async function createClassrooms(req, res){
     const classroom =  await Classroom.create(clR)
     classroom.users.push(req.body.user)
     classroom.save()
-    res.status(201).json()
+    res.status(200).json(classroom)
+} catch(err) {
+    console.log(err)
+}
 }
 
 async function deleteClassroom(req, res) {
