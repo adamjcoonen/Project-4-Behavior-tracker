@@ -10,7 +10,6 @@ function UserDisplay(props) {
       <ul>
        {props.classrooms.map((cl, idx) => (
         <li >
-        {console.log(cl._id)}
         <ClassroomListItem
                                 location={props.location}
                                 name={cl.name}

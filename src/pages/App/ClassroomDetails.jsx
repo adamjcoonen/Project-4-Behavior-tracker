@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import AddStudent from '../../components/AddStudent';
 import StudentCard from '../../components/StudentCard'
 
@@ -10,7 +10,13 @@ function ClassroomDetails(props) {
     // const inClassStu = props.students.filter( x => props.classrooms.students.includes(x._id));
     let classR = props.location.state.name
     let classId = props.location.state.id
+    let currentClass = props.classrooms.filter( filt => filt._id === classId).map(cur => cur.students )
+
+      
+      
     
+    
+    console.log(currentStudents)
 
 
     return (
@@ -22,8 +28,12 @@ function ClassroomDetails(props) {
         <h1> Classroom Name: {classR}</h1>
 <div className="Student-list">
 <ul>
-         {props.students.map(std => ( 
-            
+
+
+
+{props.students.forEach(st => {
+      currentClass.includes(st._id).map(std =>  ( 
+          
         <li key={std._id}>
         
           <StudentCard 
@@ -33,7 +43,7 @@ function ClassroomDetails(props) {
           
         </li>
 
-         ))}
+         ))})}
     </ul>
 </div>
 <AddStudent  handleAddStudent={props.handleAddStudent}
@@ -42,7 +52,8 @@ function ClassroomDetails(props) {
     
 
 
-)}
+      )  }
+    
 
 
 

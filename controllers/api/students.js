@@ -27,7 +27,6 @@ async function indexStudents(req, res) {
 
 
 async function createStudents(req, res ){
-    console.log(req.body, 'this is the student req.body')
     req.body.user = req.user._id
     let std = { name: req.body.name,
                 dob: req.body.dob,
@@ -40,11 +39,9 @@ async function createStudents(req, res ){
 
     const student = await Student.create(std)
     student.save(function(err){
-        console.log(student._id)
     Classroom.findById( req.body.classId, function(err, classR){
         classR.students.push(student._id)
         classR.save()
-        console.log(classR, "new class data")
 
     })
      
