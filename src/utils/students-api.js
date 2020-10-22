@@ -28,7 +28,7 @@ export function create(student, userId, classId) {
     headers: {'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + tokenService.getToken()
   },
-    body: JSON.stringify({...student, 'user': userId , classId})
+    body: JSON.stringify({...student, 'user': userId , "classid": classId})
    
   }).then(res => res.json());
 }

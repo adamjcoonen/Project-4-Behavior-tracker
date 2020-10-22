@@ -14,16 +14,16 @@ export function getAll() {
   }).then(res => res.json());
 }
 
-export function getOneClass(id) {
-  return fetch(`${BASE_URL}/${id}`, {
-      method: 'GET',
-      headers: {
-          'Content-type': 'application/json',
-          // Add this header - don't forget the space after Bearer 
-          'Authorization': 'Bearer ' + tokenService.getToken()
-      },
-  }).then(res => res.json());
-};
+// export function getOneClass(id) {
+//   return fetch(`${BASE_URL}/${id}`, {
+//       method: 'GET',
+//       headers: {
+//           'Content-type': 'application/json',
+//           // Add this header - don't forget the space after Bearer 
+//           'Authorization': 'Bearer ' + tokenService.getToken()
+//       },
+//   }).then(res => res.json());
+// };
 
 
 

@@ -90,7 +90,7 @@ class App extends Component {
     
     )}
   handleAddStudent = async newStudentData => {
-    const newStudent = await studentsAPI.create(newStudentData, this.state.user._id  );
+    const newStudent = await studentsAPI.create(newStudentData, this.state.user._id, this.state.classId );
     this.setState(
       state => ({
         
@@ -100,7 +100,7 @@ class App extends Component {
       this.props.history.push('/')
       
     )
-    
+    console.log()
   }
   handleDeleteClass = async id => {
     console.log(this.state)

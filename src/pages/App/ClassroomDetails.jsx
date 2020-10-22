@@ -9,7 +9,10 @@ function ClassroomDetails(props) {
     
     // const inClassStu = props.students.filter( x => props.classrooms.students.includes(x._id));
     let classR = props.location.state.name
+    let classId = props.location.state.id
     
+
+
     return (
       
         <span className='student-page'>
@@ -34,7 +37,7 @@ function ClassroomDetails(props) {
     </ul>
 </div>
 <AddStudent  handleAddStudent={props.handleAddStudent}
-             classId={props.classId} />
+             classId={classId} />
     </span>
     
 

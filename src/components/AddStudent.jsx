@@ -13,8 +13,7 @@ class AddStudent extends Component {
     formRef = React.createRef()
     handleAddStudent = e => {
         e.preventDefault();
-        this.props.handleAddStudent(this.state.formData , this.state.classId )        
-        
+        this.props.handleAddStudent(this.state.formData, this.state.classId)        
     };
     handleChange = e => {
         const formData = {...this.state.formData, [e.target.name]: e.target.value};

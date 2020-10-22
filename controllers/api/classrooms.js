@@ -21,7 +21,7 @@ module.exports = {
     const classrooms = await Classroom.find({'users': {$in: req.body.user}});
 
    
-    res.status(200).json(classrooms)
+    res.status(201).json(classrooms)
 }
 
 
@@ -38,7 +38,7 @@ async function createClassrooms(req, res){
     const classroom =  await Classroom.create(clR)
     classroom.users.push(req.body.user)
     classroom.save()
-    res.status(200).json(classroom)
+    res.status(200).json()
 } catch(err) {
     console.log(err)
 }
