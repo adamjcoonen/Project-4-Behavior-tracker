@@ -16,7 +16,7 @@ function ClassroomDetails(props) {
       
     
     
-    console.log(currentStudents)
+    console.log(currentClass)
 
 
     return (
@@ -31,8 +31,7 @@ function ClassroomDetails(props) {
 
 
 
-{props.students.forEach(st => {
-      currentClass.includes(st._id).map(std =>  ( 
+{props.students.map(std =>  ( 
           
         <li key={std._id}>
         
@@ -43,7 +42,7 @@ function ClassroomDetails(props) {
           
         </li>
 
-         ))})}
+         ))}
     </ul>
 </div>
 <AddStudent  handleAddStudent={props.handleAddStudent}
